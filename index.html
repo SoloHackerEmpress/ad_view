@@ -79,6 +79,15 @@
             const container = document.getElementById('ad-container');
             const button = document.getElementById('ad-btn');
 
+            // Clear all caches for a fresh load
+            if ('caches' in window) {
+                caches.keys().then(cacheNames => {
+                    cacheNames.forEach(cacheName => {
+                        caches.delete(cacheName);
+                    });
+                });
+            }
+
             // 1. Get the ID from URL search or hash
             let id = '';
 
